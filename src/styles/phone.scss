@@ -1,0 +1,60 @@
+@import "variables";
+
+/* phone display */
+.phone_display_div {
+
+}
+
+/* phone display */
+
+
+/* phone category */
+.phone_category_div {
+  /*margin: $base-margin;*/
+  padding: $base-padding;
+}
+
+.phone_category_title {
+  /*margin: $base-margin;*/
+  padding: $base-padding;
+}
+
+.phone_category_list_div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2em;
+  justify-items: center;
+}
+
+/* phone category */
+
+
+/* phone items */
+.phone_item_div {
+  max-width: $image_width;
+}
+
+.phone_item_div > h3 {
+  margin-top: $base-margin;
+  margin-bottom: $base-margin;
+}
+
+.price_cart_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: $base-padding;
+  padding-bottom: $base-padding;
+}
+
+.price_cart_div > button {
+  background: $support-blue;
+
+  padding: $base-padding 20px;
+}
+
+.price_cart_div > button:focus {
+  background: $second-blue;
+}
+/* phone items */

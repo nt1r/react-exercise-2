@@ -1,0 +1,42 @@
+@import "variables";
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: $support-blue;
+}
+
+.toolbar_title {
+  margin: $base-margin;
+
+  color: $white;
+}
+
+.toolbar_cart_div {
+  margin: $base-margin;
+
+  display: flex;
+  align-items: center;
+}
+
+.toolbar_cart_div > img {
+  height: 32px;
+  width: 32px;
+  margin-right: 10px;
+}
+
+.toolbar_cart_item_count {
+  color: $white;
+  background: $support-red;
+  padding: $base-padding;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

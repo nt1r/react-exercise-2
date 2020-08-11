@@ -18,7 +18,10 @@ $font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $base-padding: 10px;
 $base-margin: 20px;
 
+$image_width: 200px;
+$image_height: 200px;
+
 .image-size {
-  width: 150px;
-  height: 150px;
+  width: $image_width;
+  height: $image_height;
 }
