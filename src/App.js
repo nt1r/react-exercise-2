@@ -42,6 +42,8 @@ class App extends Component {
   }
 
   componentDidMount() {
+    onClickTestFunc = this.onClickCartButton.bind(this);
+
     const fetchPromise = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open('GET', this.dataUrl, true);
@@ -115,6 +117,22 @@ class App extends Component {
       cartItemsCount: previousState.cartItemsCount + 1,
     }));
   };
+
+  /*static onClickTestFunc = (productName) => {
+    console.log(`${productName} click`);
+    this.setState((previousState) => ({
+      ...previousState,
+      cartItemsCount: previousState.cartItemsCount + 1,
+    }));
+  }*/
 }
+
+export let onClickTestFunc = (productName) => {
+  console.log(`${productName} click`);
+  this.setState((previousState) => ({
+    ...previousState,
+    cartItemsCount: previousState.cartItemsCount + 1,
+  }));
+};
 
 export default App;
