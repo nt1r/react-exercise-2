@@ -16,6 +16,11 @@
       "name": "iPhoneSE"
     },
     {
+      "category": "iPhone",
+      "price": "￥88888",
+      "name": "iPhone100"
+    },
+    {
       "category": "HUAWEI",
       "price": "￥7999",
       "name": "HUAWEI P40 Pro+"
@@ -29,6 +34,21 @@
       "category": "HUAWEI",
       "price": "￥4000",
       "name": "HUAWEI nova 7"
+    },
+    {
+      "category": "XIAOMI",
+      "price": "￥3888",
+      "name": "XIAOMI 10"
+    },
+    {
+      "category": "XIAOMI",
+      "price": "￥2888",
+      "name": "XIAOMI 9"
+    },
+    {
+      "category": "SAMSUNG",
+      "price": "￥1000",
+      "name": "SAMSUNG Note 7"
     }
   ]
 }

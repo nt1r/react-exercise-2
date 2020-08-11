@@ -16,11 +16,11 @@ class PhoneCategory extends React.Component {
       <div className={'phone_category_div'}>
         <h2 className={'phone_category_title'}>{this.props.phoneCategory}</h2>
         <div className={'phone_category_list_div'}>
-          {this.props.phoneCategoryItems.map((phoneItem) => {
+          {this.props.phoneCategoryItems.map((onePhoneItem) => {
             return (
               <PhoneItem
-                key={phoneItem.productName}
-                phoneItem={phoneItem}
+                key={onePhoneItem.productName}
+                phoneItem={onePhoneItem}
                 onClickCartButton={this.props.onClickCartButton}
               />
             );

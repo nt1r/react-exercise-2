@@ -4,44 +4,16 @@ import Toolbar from './components/toolbar';
 import PhoneDisplay from './components/phone_display';
 
 class App extends Component {
+  dataUrl = 'http://localhost:3000/products';
+
   state = {
     phoneCategoryList: [
       {
-        category: 'iPhone',
+        category: 'no data',
         itemsList: [
           {
-            productName: 'iPhone11',
-            price: '￥5999',
-            cart: false,
-          },
-          {
-            productName: 'iPhoneXS',
-            price: '￥5399',
-            cart: false,
-          },
-          {
-            productName: 'iPhoneSE',
-            price: '￥3599',
-            cart: false,
-          },
-        ],
-      },
-      {
-        category: 'HUAWEI',
-        itemsList: [
-          {
-            productName: 'HUAWEI P40 Pro+',
-            price: '￥7999',
-            cart: false,
-          },
-          {
-            productName: 'HUAWEI Mate 30',
-            price: '￥5000',
-            cart: false,
-          },
-          {
-            productName: 'HUAWEI nova 7',
-            price: '￥4000',
+            productName: 'no data',
+            price: 'no data',
             cart: false,
           },
         ],
@@ -67,6 +39,73 @@ class App extends Component {
         </main>
       </div>
     );
+  }
+
+  componentDidMount() {
+    const fetchPromise = new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', this.dataUrl, true);
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            resolve(xhr.responseText);
+          } else {
+            reject(xhr.statusText);
+          }
+        }
+      };
+      xhr.send();
+    });
+    fetchPromise
+      .then((response) => {
+        console.log(response);
+        this.setState(this.convertResponseData(JSON.parse(response)));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  convertResponseData(response) {
+    const categoryList = [];
+    response.forEach((phoneDomain) => {
+      let targetIndex = this.findExistCategory(categoryList, phoneDomain);
+      if (targetIndex > -1) {
+        categoryList[targetIndex].itemsList.push({
+          productName: phoneDomain.name,
+          price: phoneDomain.price,
+          cart: false,
+        });
+      } else {
+        categoryList.push({
+          category: phoneDomain.category,
+          itemsList: [
+            {
+              productName: phoneDomain.name,
+              price: phoneDomain.price,
+              cart: false,
+            },
+          ],
+        });
+      }
+    });
+    return {
+      phoneCategoryList: categoryList,
+      cartItemsCount: 0,
+    };
+  }
+
+  findExistCategory(categoryList, phoneDomain) {
+    let index = -1;
+    categoryList.some((categoryItem, i) => {
+      if (categoryItem.category === phoneDomain.category) {
+        index = i;
+        return true;
+      } else {
+        return false;
+      }
+    });
+    return index;
   }
 
   onClickCartButton = (productName) => {
